@@ -1,0 +1,31 @@
+// Convert object to string.
+station = jsonArray.get(j).toString();
+
+
+// Read a json data. (Single Entity)
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+JSONObject obj = new JSONObject(jsonString);
+JSONArray jsonArray = (JSONArray) obj.get("columns"); 
+for (int i = 0; i < jsonArray.length(); i++) {
+
+            // get field value from JSON Array  
+            System.out.println(jsonArray.get(i));
+}
+
+// Read a json data. (Nested Entity)
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+JSONArray stationData = obj.getJSONArray("data");
+
+for (int i = 0; i < stationData.length(); i++) {
+	String post_id = stationData.getJSONObject(i).getString("samptime"); // Get Time 
+	Double av_c_ep = stationData.getJSONObject(i).getDouble("VAR_META.SO2_1"); // Get Data.
+	System.out.println(post_id + av_c_ep + '\n');
+	//System.out.println(post_id );
+}
+        
